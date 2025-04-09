@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 import java.awt.event.ActionEvent;
 
 public class ada2_GUI extends JFrame {
@@ -23,6 +24,7 @@ public class ada2_GUI extends JFrame {
 	private JTextField textField_edad;
 	private JTextField textField_col;
 	private Stack <persona> pila = new Stack<>();
+	private JButton btnImprimir;
 
 	/**
 	 * Launch the application.
@@ -93,16 +95,24 @@ public class ada2_GUI extends JFrame {
 				String nombre = textField_nom.getText();
 				int edad = Integer.parseInt(textField_edad.getText());
 				String color = textField_col.getText();
+
 				persona persona1=new persona (nombre, color, edad);
 				pilaPersonas.push (persona1);
 				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
 				
+
+				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
+				
+				pila.push(new persona(nombre , color , edad));
+				
+
 			}
 		});
 		btnGuardar.setBounds(68, 156, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnBorrar = new JButton("Borrar");
+
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (pila.isEmpty()) {
@@ -115,9 +125,28 @@ public class ada2_GUI extends JFrame {
 		});
 		btnBorrar.setBounds(167, 156, 89, 23);
 		contentPane.add(btnBorrar);
+
+		btnBorrar.setBounds(164, 156, 89, 23);
+		contentPane.add(btnBorrar);
 		
-		JButton btn = new JButton("algo más");
-		btn.setBounds(265, 156, 89, 23);
-		contentPane.add(btn);
+
+		btnImprimir = new JButton("Imprimir");
+		btnImprimir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(pila.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "La pila esta vacia");
+					return;
+				}
+				String resultado = "";
+				for(persona persona : pila) {
+					resultado += persona.getNombre() + persona.getEdad() + persona.getColorFav();
+				}
+				JOptionPane.showMessageDialog(null, resultado);
+			}
+		});
+
+		btnImprimir.setBounds(265, 156, 89, 23);
+		contentPane.add(btnImprimir);
 	}
 }
