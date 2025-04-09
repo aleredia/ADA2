@@ -22,6 +22,7 @@ public class ada2_GUI extends JFrame {
 	private JTextField textField_nom;
 	private JTextField textField_edad;
 	private JTextField textField_col;
+	private Stack <persona> pila = new Stack<>();
 
 	/**
 	 * Launch the application.
@@ -102,7 +103,17 @@ public class ada2_GUI extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		JButton btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(164, 156, 89, 23);
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (pila.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "La pila está vacía");
+				} else {
+					persona eliminada = pila.pop();
+					JOptionPane.showMessageDialog(null, "Se eliminó a " + eliminada.getNombre());
+				}
+			}
+		});
+		btnBorrar.setBounds(167, 156, 89, 23);
 		contentPane.add(btnBorrar);
 		
 		JButton btn = new JButton("algo más");
