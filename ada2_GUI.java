@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ada2_GUI extends JFrame {
+	Stack<persona> pilaPersonas = new Stack<persona>();
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -89,8 +90,10 @@ public class ada2_GUI extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = textField_nom.getText();
-				String edad = textField_edad.getText();
+				int edad = Integer.parseInt(textField_edad.getText());
 				String color = textField_col.getText();
+				persona persona1=new persona (nombre, color, edad);
+				pilaPersonas.push (persona1);
 				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
 				
 			}
