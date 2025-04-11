@@ -16,14 +16,15 @@ import java.util.Stack;
 import java.awt.event.ActionEvent;
 
 public class ada2_GUI extends JFrame {
+	
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField_nom;
 	private JTextField textField_edad;
 	private JTextField textField_col;
-	
 	private Stack<persona> pila = new Stack<>();
+
 
 	/**
 	 * Launch the application.
@@ -94,9 +95,9 @@ public class ada2_GUI extends JFrame {
 				String nombre = textField_nom.getText();
 				int edad = Integer.parseInt(textField_edad.getText());
 				String color = textField_col.getText();
+				persona persona1=new persona (nombre, color, edad);
+				pila.push (persona1);
 				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
-				
-				pila.push(new persona(nombre , color , edad));
 				
 			}
 		});
@@ -104,11 +105,27 @@ public class ada2_GUI extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (pila.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "La pila está vacía");
+				} else {
+					persona eliminada = pila.pop();
+					JOptionPane.showMessageDialog(null, "Se eliminó a " + eliminada.getNombre());
+				}
+			}
+		});
+		btnBorrar.setBounds(167, 156, 89, 23);
+		contentPane.add(btnBorrar);
+
 		btnBorrar.setBounds(164, 156, 89, 23);
 		contentPane.add(btnBorrar);
 		
-		JButton btn = new JButton("Imprimir");
-		btn.addActionListener(new ActionListener() {
+		btnBorrar.setBounds(164, 156, 89, 23);
+		contentPane.add(btnBorrar);
+		
+		JButton btnImprimir = new JButton("Imprimir");
+		btnImprimir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(pila.isEmpty()) {
@@ -122,7 +139,13 @@ public class ada2_GUI extends JFrame {
 				JOptionPane.showMessageDialog(null, resultado);
 			}
 		});
-		btn.setBounds(265, 156, 89, 23);
-		contentPane.add(btn);
+
+
+		btnImprimir.setBounds(265, 156, 89, 23);
+		contentPane.add(btnImprimir);
+
+		btnImprimir.setBounds(265, 156, 89, 23);
+		contentPane.add(btnImprimir);
+
 	}
 }
