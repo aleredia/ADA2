@@ -23,8 +23,9 @@ public class ada2_GUI extends JFrame {
 	private JTextField textField_nom;
 	private JTextField textField_edad;
 	private JTextField textField_col;
-	private Stack <persona> pila = new Stack<>();
 	private JButton btnImprimir;
+	private Stack<persona> pila = new Stack<>();
+
 
 	/**
 	 * Launch the application.
@@ -95,24 +96,16 @@ public class ada2_GUI extends JFrame {
 				String nombre = textField_nom.getText();
 				int edad = Integer.parseInt(textField_edad.getText());
 				String color = textField_col.getText();
-
 				persona persona1=new persona (nombre, color, edad);
 				pilaPersonas.push (persona1);
 				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
 				
-
-				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
-				
-				pila.push(new persona(nombre , color , edad));
-				
-
 			}
 		});
 		btnGuardar.setBounds(68, 156, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnBorrar = new JButton("Borrar");
-
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (pila.isEmpty()) {
@@ -129,9 +122,12 @@ public class ada2_GUI extends JFrame {
 		btnBorrar.setBounds(164, 156, 89, 23);
 		contentPane.add(btnBorrar);
 		
+		btnBorrar.setBounds(164, 156, 89, 23);
+		contentPane.add(btnBorrar);
+		
+		JButton btn = new JButton("Imprimir");
+		btn.addActionListener(new ActionListener() {
 
-		btnImprimir = new JButton("Imprimir");
-		btnImprimir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(pila.isEmpty()) {
@@ -146,7 +142,12 @@ public class ada2_GUI extends JFrame {
 			}
 		});
 
+
 		btnImprimir.setBounds(265, 156, 89, 23);
 		contentPane.add(btnImprimir);
+
+		btn.setBounds(265, 156, 89, 23);
+		contentPane.add(btn);
+
 	}
 }
