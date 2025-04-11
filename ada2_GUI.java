@@ -16,14 +16,13 @@ import java.util.Stack;
 import java.awt.event.ActionEvent;
 
 public class ada2_GUI extends JFrame {
-	Stack<persona> pilaPersonas = new Stack<persona>();
+	
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField_nom;
 	private JTextField textField_edad;
 	private JTextField textField_col;
-	private JButton btnImprimir;
 	private Stack<persona> pila = new Stack<>();
 
 
@@ -97,7 +96,7 @@ public class ada2_GUI extends JFrame {
 				int edad = Integer.parseInt(textField_edad.getText());
 				String color = textField_col.getText();
 				persona persona1=new persona (nombre, color, edad);
-				pilaPersonas.push (persona1);
+				pila.push (persona1);
 				JOptionPane.showMessageDialog(null, "Datos agregados: " + nombre + ", " + edad + ", " + color);
 				
 			}
@@ -125,9 +124,8 @@ public class ada2_GUI extends JFrame {
 		btnBorrar.setBounds(164, 156, 89, 23);
 		contentPane.add(btnBorrar);
 		
-		JButton btn = new JButton("Imprimir");
-		btn.addActionListener(new ActionListener() {
-
+		JButton btnImprimir = new JButton("Imprimir");
+		btnImprimir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(pila.isEmpty()) {
@@ -146,8 +144,8 @@ public class ada2_GUI extends JFrame {
 		btnImprimir.setBounds(265, 156, 89, 23);
 		contentPane.add(btnImprimir);
 
-		btn.setBounds(265, 156, 89, 23);
-		contentPane.add(btn);
+		btnImprimir.setBounds(265, 156, 89, 23);
+		contentPane.add(btnImprimir);
 
 	}
 }
